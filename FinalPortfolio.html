@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        /* Custom styles */
+        :root {
+            --primary-color: #3273dc;
+            --secondary-color: #00d1b2;
+            --accent-color: #ff3860;
+            --text-color: #ffffff;
+            --background-fade: rgba(0, 0, 0, 0.7);
+            --card-background: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            background-color: black;
+        }
+
+        #space-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .content-wrapper {
+            color: var(--text-color);
+        }
+
+        /* Enhanced Navbar */
+        .navbar {
+            background: rgba(0, 0, 0, 0.5) !important;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.is-scrolled {
+            background: rgba(0, 0, 0, 0.8) !important;
+        }
+
+        .navbar-item {
+            color: var(--text-color) !important;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-item:hover {
+            color: var(--primary-color) !important;
+            background-color: transparent !important;
+        }
+
+        /* Enhanced Profile Section */
+        .profile-container {
+            position: relative;
+        }
+
+        .profile-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            margin: 0 auto;
+            display: block;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .profile-image::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+        }
+
+        /* Enhanced Skill Tags */
+        .skill-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem;
+            border-radius: 20px;
+            background: var(--card-background);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.1);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px var(--primary-color);
+        }
+
+        /* Enhanced Timeline */
+        .timeline-item {
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--card-background);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 0 20px rgba(50, 115, 220, 0.3);
+        }
+
+        /* Enhanced Project Cards */
+        .project-card {
+            background: var(--card-background);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 30px rgba(50, 115, 220, 0.3);
+        }
+
+        .project-card img {
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Enhanced Social Icons */
+        .social-icon {
+            font-size: 2.5rem;
+            margin: 0 1rem;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 1.5rem;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50%;
+            height: 3px;
+            background: var(--primary-color);
+            transform: translateX(50%);
+        }
+
+        /* Responsive Design Enhancements */
+        @media screen and (max-width: 768px) {
+            .navbar-menu {
+                background: rgba(0, 0, 0, 0.9) !important;
+                backdrop-filter: blur(10px);
+            }
+
+            .profile-image {
+                width: 180px;
+                height: 180px;
+            }
+
+            section {
+                padding: 4rem 1rem;
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--primary-color);
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <div id="space-background"></div>
+    <div class="progress-bar" id="scrollProgress"></div>
+    
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#home">
+                <strong>Your Name</strong>
+            </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+            <div class="navbar-end">
+                <a class="navbar-item" href="#about">About</a>
+                <a class="navbar-item" href="#projects">Projects</a>
+                <a class="navbar-item" href="#publications">Publications</a>
+                <a class="navbar-item" href="#education">Education</a>
+                <a class="navbar-item" href="#skills">Skills</a>
+                <a class="navbar-item" href="#contact">Contact</a>
+                <a class="navbar-item" href="path/to/your/cv.pdf" target="_blank">CV</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content-wrapper">
+        <section id="home" class="hero is-fullheight">
+            <div class="hero-body">
+                <div class="container">
+                    <div class="columns is-centered">
+                        <div class="column is-half has-text-centered" data-aos="fade-up">
+                            <div class="profile-container">
+                                <img src="assets/prof_pic.jpg" alt="Profile" class="profile-image mb-5">
+                            </div>
+                            <h1 class="title is-2 has-text-white mb-4">Your Name</h1>
+                            <h2 class="subtitle is-4 has-text-white mb-5">Computer Science Researcher</h2>
+                            <p class="has-text-white is-size-5">Exploring the frontiers of computer science, one algorithm at a time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2 class="title is-2 has-text-centered has-text-white section-title mb-6" data-aos="fade-up">Projects</h2>
+                <div class="columns is-multiline">
+                    <div class="column is-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="project-card">
+                            <figure class="image is-4by3">
+                                <img src="/api/placeholder/400/300" alt="Project 1">
+                            </figure>
+                            <div class="p-4">
+                                <h3 class="title is-4 has-text-white mb-3">Project Title 1</h3>
+                                <p class="has-text-white">Brief description of the project and your role in it.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more project cards as needed -->
+                </div>
+            </div>
+        </section>
+
+        <section id="publications">
+            <div class="container">
+                <h2 class="title is-2 has-text-centered has-text-white section-title mb-6" data-aos="fade-up">Publications</h2>
+                <div class="columns is-centered">
+                    <div class="column is-8">
+                        <div class="timeline-item" data-aos="fade-left">
+                            <h3 class="title is-4 has-text-white mb-3">Publication Title 1</h3>
+                            <p class="has-text-white mb-2">Authors, Journal/Conference, Year</p>
+                            <p class="has-text-white">Brief description of the publication and its impact.</p>
+                        </div>
+                        <!-- Add more publications as needed -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <div class="container">
+                <h2 class="title is-2 has-text-centered has-text-white section-title mb-6" data-aos="fade-up">Education</h2>
+                <div class="columns is-centered">
+                    <div class="column is-8">
+                        <div class="timeline-item" data-aos="fade-right">
+                            <h3 class="title is-4 has-text-white mb-3">University Name</h3>
+                            <p class="has-text-white mb-2">Degree - Field of Study</p>
+                            <p class="has-text-white">Year - Year</p>
+                        </div>
+                        <!-- Add more education items as needed -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h2 class="title is-2 has-text-centered has-text-white section-title mb-6" data-aos="fade-up">Skills</h2>
+                <div class="has-text-centered">
+                    <span class="skill-tag" data-aos="zoom-in" data-aos-delay="100">Python</span>
+                    <span class="skill-tag" data-aos="zoom-in" data-aos-delay="200">Machine Learning</span>
+                    <span class="skill-tag" data-aos="zoom-in" data-aos-delay="300">Data Analysis</span>
+                    <!-- Add more skills as needed -->
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="title is-2 has-text-centered has-text-white section-title mb-6" data-aos="fade-up">Contact</h2>
+                <div class="has-text-centered">
+                    <a href="mailto:your.email@example.com" class="social-icon" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/yourprofile" class="social-icon" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/yourusername" class="social-icon" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          // Initialize AOS with enhanced settings
+          AOS.init({
+              duration: 1000,
+              once: true,
+              offset: 100,
+              delay: 100,
+              easing: 'ease-in-out'
+          });
+
+          // Navbar burger menu functionality
+          const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+          if ($navbarBurgers.length > 0) {
+              $navbarBurgers.forEach(el => {
+                  el.addEventListener('click', () => {
+                      const target = el.dataset.target;
+                      const $target = document.getElementById(target);
+                      el.classList.toggle('is-active');
+                      $target.classList.toggle('is-active');
+                  });
+              });
+          }
+
+          // Enhanced smooth scrolling for anchor links
+          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+              anchor.addEventListener('click', function (e) {
+                  e.preventDefault();
+                  const targetId = this.getAttribute('href');
+                  const targetElement = document.querySelector(targetId);
+                  const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                  const targetPosition = targetElement.offsetTop - navbarHeight;
+                  
+                  window.scrollTo({
+                      top: targetPosition,
+                      behavior: 'smooth'
+                  });
+
+                  // Update navbar items active state
+                  document.querySelectorAll('.navbar-item').forEach(item => {
+                      item.classList.remove('is-active');
+                  });
+                  this.classList.add('is-active');
+              });
+          });
+
+          // Navbar background change and scroll progress on scroll
+          const navbar = document.querySelector('.navbar');
+          const scrollProgress = document.getElementById('scrollProgress');
+          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+          window.addEventListener('scroll', () => {
+              // Navbar background change
+              if (window.scrollY > 50) {
+                  navbar.classList.add('is-scrolled');
+              } else {
+                  navbar.classList.remove('is-scrolled');
+              }
+
+              // Update scroll progress bar
+              const scrolled = (window.scrollY / maxScroll) * 100;
+              scrollProgress.style.width = `${scrolled}%`;
+          });
+
+          // Intersection Observer for section animations
+          const sections = document.querySelectorAll('section');
+          const observerOptions = {
+              threshold: 0.2
+          };
+
+          const sectionObserver = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                      entry.target.classList.add('section-visible');
+                      updateActiveNavItem(entry.target.id);
+                  }
+              });
+          }, observerOptions);
+
+          sections.forEach(section => {
+              sectionObserver.observe(section);
+          });
+
+          function updateActiveNavItem(sectionId) {
+              document.querySelectorAll('.navbar-item').forEach(item => {
+                  item.classList.remove('is-active');
+                  if (item.getAttribute('href') === `#${sectionId}`) {
+                      item.classList.add('is-active');
+                  }
+              });
+          }
+
+          // Parallax effect for profile image
+          const profileImage = document.querySelector('.profile-image');
+          window.addEventListener('mousemove', (e) => {
+              const mouseX = e.clientX / window.innerWidth - 0.5;
+              const mouseY = e.clientY / window.innerHeight - 0.5;
+              
+              profileImage.style.transform = `translate(${mouseX * 20}px, ${mouseY * 20}px)`;
+          });
+      });
+  </script>
+</body>
+</html>

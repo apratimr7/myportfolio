@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My first three.js app</title>
+    <script type="importmap">
+      {        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.167.1/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.167.1/examples/jsm/"
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #threejs-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+        .content-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            color: white;
+        }
+    </style>
+  </head>
+  <body>
+     <!-- Content overlay for future buttons/navigation -->
+     <div class="content-overlay">
+      <h1 class="title is-1 has-text-white">Physics, Philosophy, and Reality</h1>
+      <p class="subtitle is-4">Welcome to my world of black holes and cosmic wonder.</p>
+  </div>
+
+  <!-- Three.js Container -->
+  <div id="threejs-container"></div>
+
+  <!-- Bulma Button Example -->
+  <button class="button is-info" style="position: absolute; bottom: 20px; left: 20px;">Explore</button>
+
+    <script type="module" src="/test/main.js"></script>
+  </body>
+</html>

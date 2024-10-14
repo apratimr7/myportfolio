@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- <style>
+        /* Custom styles */
+        :root {
+            --primary-color: #3273dc;
+            --secondary-color: #00d1b2;
+            --accent-color: #ff3860;
+            --text-color: #ffffff;
+            --background-fade: rgba(0, 0, 0, 0.7);
+            --card-background: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            background-color: black;
+        }
+
+        #space-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .content-wrapper {
+            color: var(--text-color);
+        }
+
+        /* Enhanced Navbar */
+        .navbar {
+            background: rgba(0, 0, 0, 0.5) !important;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.is-scrolled {
+            background: rgba(0, 0, 0, 0.8) !important;
+        }
+
+        .navbar-item {
+            color: var(--text-color) !important;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-item:hover {
+            color: var(--primary-color) !important;
+            background-color: transparent !important;
+        }
+
+        /* Enhanced Profile Section */
+        .profile-container {
+            position: relative;
+        }
+
+        .profile-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            margin: 0 auto;
+            display: block;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .profile-image::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+        }
+
+        /* Enhanced Skill Tags */
+        .skill-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem;
+            border-radius: 20px;
+            background: var(--card-background);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.1);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px var(--primary-color);
+        }
+
+        /* Enhanced Timeline */
+        .timeline-item {
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: var(--card-background);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 0 20px rgba(50, 115, 220, 0.3);
+        }
+
+        /* Enhanced Project Cards */
+        .project-card {
+            background: var(--card-background);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 30px rgba(50, 115, 220, 0.3);
+        }
+
+        .project-card img {
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Enhanced Social Icons */
+        .social-icon {
+            font-size: 2.5rem;
+            margin: 0 1rem;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 1.5rem;
+        }
+
+        /* Enhanced section title styles */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50%;
+            height: 3px;
+            background: var(--primary-color);
+            transform: translateX(50%);
+            transition: all 0.3s ease;
+        }
+
+        /* New hover effects for section titles */
+        .section-title:hover {
+            text-shadow: 0 0 10px var(--primary-color),
+                         0 0 20px var(--primary-color),
+                         0 0 30px var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .section-title:hover::after {
+            width: 75%;
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+
+        /* Add a subtle animation to draw attention to the hover effect */
+        @keyframes subtle-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .section-title {
+            cursor: pointer;
+        }
+
+        .section-title:hover {
+            animation: subtle-bounce 1s ease infinite;
+        }
+
+        /* Responsive Design Enhancements */
+        @media screen and (max-width: 768px) {
+            .navbar-menu {
+                background: rgba(0, 0, 0, 0.9) !important;
+                backdrop-filter: blur(10px);
+            }
+
+            .profile-image {
+                width: 180px;
+                height: 180px;
+            }
+
+            section {
+                padding: 4rem 1rem;
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--primary-color);
+            z-index: 9999;
+        }
+
+        /* New and enhanced styles */
+        .glow-text {
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+        
+        .about-card {
+            background: var(--card-background);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid var(--primary-color);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .about-card:hover {
+            box-shadow: 0 0 30px rgba(50, 115, 220, 0.3);
+        }
+        
+        .interest-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--card-background), rgba(50, 115, 220, 0.2));
+            transition: all 0.3s ease;
+        }
+        
+        .interest-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(50, 115, 220, 0.1), rgba(0, 209, 178, 0.1));
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .icon-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .icon-box i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: var(--primary-color);
+        }
+    </style> -->
+</head>
+<body>
+    <div id="space-background"></div>
+    <div class="progress-bar" id="scrollProgress"></div>
+    
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#home">
+                <strong>Your Name</strong>
+            </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+            <div class="navbar-end">
+                <a class="navbar-item" href="#about">About</a>
+                <a class="navbar-item" href="#projects">Projects</a>
+                <a class="navbar-item" href="#publications">Publications</a>
+                <a class="navbar-item" href="#education">Education</a>
+                <a class="navbar-item" href="#skills">Skills</a>
+                <a class="navbar-item" href="#contact">Contact</a>
+                <a class="navbar-item" href="/CV.html" target="_blank">CV</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content-wrapper">
+        <section id="home" class="hero is-fullheight">
+            <div class="hero-body">
+                <div class="container">
+                    <div class="columns is-centered">
+                        <div class="column is-half has-text-centered" data-aos="fade-up">
+                            <div class="profile-container">
+                                <img src="assets/prof_pic.jpg" alt="Profile" class="profile-image mb-5">
+                            </div>
+                            <h1 class="title is-2 has-text-white mb-4">Your Name</h1>
+                            <h2 class="subtitle is-4 has-text-white mb-5">Computer Science Researcher</h2>
+                            <p class="has-text-white is-size-5">Exploring the frontiers of computer science, one algorithm at a time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modified About section -->
+        <section id="about" class="section">
+          <div class="container">
+              <h2 class="title is-2 has-text-centered has-text-white section-title mb-6 glow-text" data-aos="fade-up">About Me</h2>
+              <div class="columns is-multiline">
+                  <div class="column is-7" data-aos="fade-right">
+                      <div class="about-card">
+                          <h3 class="title is-4 has-text-white mb-4">Academic Journey</h3>
+                          <p class="has-text-white mb-4">As an incoming graduate student in Computer Science, I am passionate about exploring the intersections of technology and innovation. My undergraduate experience has equipped me with a strong foundation in computer science fundamentals, and I'm excited to delve deeper into specialized areas during my graduate studies.</p>
+                          
+                          <div class="divider"></div>
+                          
+                          <h3 class="title is-4 has-text-white mb-4">Research Interests</h3>
+                          <div class="mb-4">
+                              <span class="interest-tag">Machine Learning</span>
+                              <span class="interest-tag">Data Science</span>
+                              <span class="interest-tag">Computer Vision</span>
+                              <span class="interest-tag">Natural Language Processing</span>
+                          </div>
+                          
+                          <div class="highlight-box">
+                              <h4 class="title is-5 has-text-white mb-3">What Drives Me</h4>
+                              <p class="has-text-white">I am driven by the potential of technology to solve real-world problems and make a positive impact. My goal is to contribute to groundbreaking research that pushes the boundaries of what's possible in computer science.</p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="column is-5" data-aos="fade-left">
+                      <div class="about-card">
+                          <h3 class="title is-4 has-text-white mb-4">Academic Highlights</h3>
+                          
+                          <div class="icon-box">
+                              <i class="fas fa-graduation-cap"></i>
+                              <div>
+                                  <h4 class="title is-5 has-text-white mb-2">Bachelor's in Computer Science</h4>
+                                  <p class="has-text-white">University Name, Graduated 2023</p>
+                              </div>
+                          </div>
+                          
+                          <div class="icon-box">
+                              <i class="fas fa-award"></i>
+                              <div>
+                                  <h4 class="title is-5 has-text-white mb-2">Academic Achievement</h4>
+                                  <p class="has-text-white">Dean's List, 4 semesters</p>
+                              </div>
+                          </div>
+                          
+                          <div class="icon-box">
+                              <i class="fas fa-code-branch"></i>
+                              <div>
+                                  <h4 class="title is-5 has-text-white mb-2">Technical Skills</h4>
+                                  <p class="has-text-white">Python, Java, Machine Learning frameworks</p>
+                              </div>
+                          </div>
+                          
+                          <div class="highlight-box mt-4">
+                              <h4 class="title is-5 has-text-white mb-3">Looking Forward</h4>
+                              <p class="has-text-white">Excited to begin my graduate studies and contribute to cutting-edge research in computer science.</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2 class="title is-2 has-text-centered has-text-white section-title mb-6" data-aos="fade-up">Projects</h2>
+                <div class="columns is-multiline">
+                    <div class="column is-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="project-card">
+                            <figure class="image is-4by3">
+                                <img src="/api/placeholder/400/300" alt="Project 1">
+                            </figure>
+                            <div class="p-4">
+                                <h3 class="title is-4 has-text-white mb-3">Project Title 1</h3>
+                                <p class="has-text-white">Brief description of the project and your role in it.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more project cards as needed -->
+                </div>
+            </div>
+        </section>
+
+        <section id="publications">
+            <div class="container">
+                <h2 class="title is-2 has-text-centered has-text-white section-title mb-6" data-aos="fade-up">Publications</h2>
+                <div class="columns is-centered">
+                    <div class="column is-8">
+                        <div class="timeline-item" data-aos="fade-left">
+                            <h3 class="title is-4 has-text-white mb-3">Publication Title 1</h3>
+                            <p class="has-text-white mb-2">Authors, Journal/Conference, Year</p>
+                            <p class="has-text-white">Brief description of the publication and its impact.</p>
+                        </div>
+                        <!-- Add more publications as needed -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <div class="container">
+                <h2 class="title is-2 has-text-centered has-text-white section-title mb-6" data-aos="fade-up">Education</h2>
+                <div class="columns is-centered">
+                    <div class="column is-8">
+                        <div class="timeline-item" data-aos="fade-right">
+                            <h3 class="title is-4 has-text-white mb-3">University Name</h3>
+                            <p class="has-text-white mb-2">Degree - Field of Study</p>
+                            <p class="has-text-white">Year - Year</p>
+                        </div>
+                        <!-- Add more education items as needed -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h2 class="title is-2 has-text-centered has-text-white section-title mb-6" data-aos="fade-up">Skills</h2>
+                <div class="has-text-centered">
+                    <span class="skill-tag" data-aos="zoom-in" data-aos-delay="100">Python</span>
+                    <span class="skill-tag" data-aos="zoom-in" data-aos-delay="200">Machine Learning</span>
+                    <span class="skill-tag" data-aos="zoom-in" data-aos-delay="300">Data Analysis</span>
+                    <!-- Add more skills as needed -->
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="title is-2 has-text-centered has-text-white section-title mb-6" data-aos="fade-up">Contact</h2>
+                <div class="has-text-centered">
+                    <a href="mailto:your.email@example.com" class="social-icon" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/yourprofile" class="social-icon" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/yourusername" class="social-icon" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          // Initialize AOS with enhanced settings
+          AOS.init({
+              duration: 1000,
+              once: true,
+              offset: 100,
+              delay: 100,
+              easing: 'ease-in-out'
+          });
+
+          // Navbar burger menu functionality
+          const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+          if ($navbarBurgers.length > 0) {
+              $navbarBurgers.forEach(el => {
+                  el.addEventListener('click', () => {
+                      const target = el.dataset.target;
+                      const $target = document.getElementById(target);
+                      el.classList.toggle('is-active');
+                      $target.classList.toggle('is-active');
+                  });
+              });
+          }
+
+          // Enhanced smooth scrolling for anchor links
+          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+              anchor.addEventListener('click', function (e) {
+                  e.preventDefault();
+                  const targetId = this.getAttribute('href');
+                  const targetElement = document.querySelector(targetId);
+                  const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                  const targetPosition = targetElement.offsetTop - navbarHeight;
+                  
+                  window.scrollTo({
+                      top: targetPosition,
+                      behavior: 'smooth'
+                  });
+
+                  // Update navbar items active state
+                  document.querySelectorAll('.navbar-item').forEach(item => {
+                      item.classList.remove('is-active');
+                  });
+                  this.classList.add('is-active');
+              });
+          });
+
+          // Navbar background change and scroll progress on scroll
+          const navbar = document.querySelector('.navbar');
+          const scrollProgress = document.getElementById('scrollProgress');
+          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+          window.addEventListener('scroll', () => {
+              // Navbar background change
+              if (window.scrollY > 50) {
+                  navbar.classList.add('is-scrolled');
+              } else {
+                  navbar.classList.remove('is-scrolled');
+              }
+
+              // Update scroll progress bar
+              const scrolled = (window.scrollY / maxScroll) * 100;
+              scrollProgress.style.width = `${scrolled}%`;
+          });
+
+          // Intersection Observer for section animations
+          const sections = document.querySelectorAll('section');
+          const observerOptions = {
+              threshold: 0.2
+          };
+
+          const sectionObserver = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                      entry.target.classList.add('section-visible');
+                      updateActiveNavItem(entry.target.id);
+                  }
+              });
+          }, observerOptions);
+
+          sections.forEach(section => {
+              sectionObserver.observe(section);
+          });
+
+          function updateActiveNavItem(sectionId) {
+              document.querySelectorAll('.navbar-item').forEach(item => {
+                  item.classList.remove('is-active');
+                  if (item.getAttribute('href') === `#${sectionId}`) {
+                      item.classList.add('is-active');
+                  }
+              });
+          }
+
+          // Parallax effect for profile image
+          const profileImage = document.querySelector('.profile-image');
+          window.addEventListener('mousemove', (e) => {
+              const mouseX = e.clientX / window.innerWidth - 0.5;
+              const mouseY = e.clientY / window.innerHeight - 0.5;
+              
+              profileImage.style.transform = `translate(${mouseX * 20}px, ${mouseY * 20}px)`;
+          });
+      });
+  </script>
+</body>
+</html>
